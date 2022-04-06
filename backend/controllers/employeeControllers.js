@@ -7,7 +7,7 @@ import User from "../models/userModels.js";
 //@access       Private
 
 const getEmployees = asyncHandler(async (req, res) => {
-  const employees = await Employee.find({});
+  const employees = await Employee.find({ company: req.query.company });
   res.json(employees);
 });
 
