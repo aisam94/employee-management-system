@@ -58,6 +58,7 @@ const addEmployee = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: employee._id,
       name: employee.name,
+      employeeId: employee.employeeId,
       email: employee.email,
       company: employee.company,
       picture: employee.picture,
@@ -72,11 +73,12 @@ const addEmployee = asyncHandler(async (req, res) => {
 });
 
 //@description  Update an employee
-//@router       PUT /api/employees/
+//@router       PUT /api/employees/:id
 //@access       Private
 
 const updateEmployeeById = asyncHandler(async (req, res) => {
-  const employee = await Employee.findById(req.body.employeeId);
+  // const employee = await Employee.findById(req.body.employeeId);
+  const employee = await Employee.findById(req.params.id);
 
   if (employee) {
     employee.name = req.body.name || employee.name;
@@ -103,13 +105,13 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
 });
 
 //@description  Delete an employee
-//@router       DELETE /api/employees/
+//@router       DELETE /api/employees/:id
 //@access       Private
 
 const deleteEmployee = asyncHandler(async (req, res) => {
   //need to check if employee under his company not from others
   try {
-    const employee = await Employee.findById(req.body.id);
+    const employee = await Employee.findById(req.params.id);
 
     //check if employee exist
     if (!employee) {

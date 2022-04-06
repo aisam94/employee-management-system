@@ -16,6 +16,7 @@ const authUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      company: user.company,
       token: generateToken(user._id),
     });
   } else {
@@ -40,15 +41,15 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User already exist.");
   }
 
-  const company = await Company.create({
-    name: companyName,
-  });
+  // const company = await Company.create({
+  //   name: companyName,
+  // });
 
   const user = await User.create({
-    name,
-    email,
-    password,
-    company,
+    name: name,
+    email: email,
+    password: password,
+    company: companyName,
   });
 
   if (user) {

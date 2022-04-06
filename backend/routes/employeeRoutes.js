@@ -13,7 +13,7 @@ const router = express.Router();
 router.route("/").get(protect, getEmployees);
 router.route("/:id").get(protect, getEmployeeById);
 router.route("/").post(protect, addEmployee);
-router.route("/").put(protect, updateEmployeeById);
-router.route("/").delete(protect, deleteEmployee);
+router.route("/:id").put(protect, updateEmployeeById);
+router.route("/:id").delete(protect, deleteEmployee);
 
 export default router;
