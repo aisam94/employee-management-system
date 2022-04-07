@@ -87,6 +87,7 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
     employee.role = req.body.role || employee.role;
     employee.age = req.body.age || employee.age;
     employee.department = req.body.department || employee.department;
+    employee.employeeId = req.body.employeeId || employee.employeeId;
 
     const updatedEmployee = await employee.save();
     return res.json({
@@ -97,6 +98,7 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
       role: updatedEmployee.role,
       age: updatedEmployee.age,
       department: updatedEmployee.department,
+      employeeId: updatedEmployee.employeeId,
     });
   } else {
     res.status(404);
