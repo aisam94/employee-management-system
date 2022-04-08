@@ -1,13 +1,18 @@
 import asyncHandler from "express-async-handler";
 import Employee from "../models/employeeModels.js";
-import User from "../models/userModels.js";
+import Department from "../models/departmentModels.js";
+import Role from "../models/roleModels.js";
 
 //@description  Fetch all employees
 //@router       GET /api/employees
 //@access       Private
 
 const getEmployees = asyncHandler(async (req, res) => {
-  const employees = await Employee.find({ company: req.query.company });
+  const employees = await Employee.find({
+    company: req.query.company,
+  })
+    .populate("department")
+    .populate("role");
   res.json(employees);
 });
 
@@ -16,7 +21,9 @@ const getEmployees = asyncHandler(async (req, res) => {
 //@access       Private
 
 const getEmployeeById = asyncHandler(async (req, res) => {
-  const employee = await Employee.findById(req.params.id);
+  const employee = await Employee.findById(req.params.id)
+    .populate("department")
+    .populate("role");
 
   if (employee) {
     res.json(employee);
@@ -32,25 +39,38 @@ const getEmployeeById = asyncHandler(async (req, res) => {
 
 const addEmployee = asyncHandler(async (req, res) => {
   const { name, employeeId, email, picture, role, age, department } = req.body;
+  const company = req.user.company;
 
   //check if employee already exists
-  const employeeExists = await Employee.findOne({ name });
+  const employeeExists = await Employee.findOne({
+    name,
+    email,
+    employeeId,
+    company,
+  });
 
   if (employeeExists) {
     res.status(400);
     throw new Error("Employee already exists.");
   }
 
-  const company = req.user.company;
+  const newDepartment = await Department.create({
+    name: department,
+  });
+
+  const newRole = await Role.create({
+    name: role,
+  });
+
   const employee = await Employee.create({
-    name,
-    employeeId,
-    email,
-    picture,
-    role,
-    age,
-    department,
-    company,
+    name: name,
+    employeeId: employeeId,
+    email: email,
+    picture: picture,
+    role: newRole,
+    age: age,
+    department: newDepartment,
+    company: company,
   });
 
   //return employee profile json
@@ -77,17 +97,25 @@ const addEmployee = asyncHandler(async (req, res) => {
 //@access       Private
 
 const updateEmployeeById = asyncHandler(async (req, res) => {
-  // const employee = await Employee.findById(req.body.employeeId);
+  const company = req.query.company;
   const employee = await Employee.findById(req.params.id);
+
+  const newDepartment = await Department.create({
+    name: req.body.department,
+  });
+
+  const newRole = await Role.create({
+    name: req.body.role,
+  });
 
   if (employee) {
     employee.name = req.body.name || employee.name;
     employee.email = req.body.email || employee.email;
     employee.picture = req.body.picture || employee.picture;
-    employee.role = req.body.role || employee.role;
     employee.age = req.body.age || employee.age;
-    employee.department = req.body.department || employee.department;
     employee.employeeId = req.body.employeeId || employee.employeeId;
+    employee.role = newRole || employee.role;
+    employee.department = newDepartment || employee.department;
 
     const updatedEmployee = await employee.save();
     return res.json({

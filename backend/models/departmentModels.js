@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
 
 const departmentSchema = mongoose.Schema({
-  DepartmentName: {
+  name: {
     type: String,
-    required: true,
+  },
+  description: {
+    type: String,
+  },
+  picture: {
+    type: String,
   },
 });
 

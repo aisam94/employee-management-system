@@ -17,14 +17,12 @@ const employeeSchema = mongoose.Schema(
       required: true,
     },
     role: {
-      type: String,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
     },
     department: {
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref: "Department",
-      type: String,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Department",
     },
     age: {
       type: Number,
