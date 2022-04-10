@@ -13,6 +13,7 @@ const getEmployees = asyncHandler(async (req, res) => {
   })
     .populate("department")
     .populate("role");
+
   res.json(employees);
 });
 
