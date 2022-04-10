@@ -10,6 +10,9 @@ const departmentSchema = mongoose.Schema({
   picture: {
     type: String,
   },
+  company: {
+    type: String,
+  },
 });
 
 const Department = mongoose.model("Department", departmentSchema);

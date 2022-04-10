@@ -97,7 +97,6 @@ const addEmployee = asyncHandler(async (req, res) => {
 //@access       Private
 
 const updateEmployeeById = asyncHandler(async (req, res) => {
-  const company = req.query.company;
   const employee = await Employee.findById(req.params.id);
 
   const newDepartment = await Department.create({
@@ -153,9 +152,9 @@ const deleteEmployee = asyncHandler(async (req, res) => {
     return res.json({
       message: "Employee has been deleted.",
     });
-  } catch (err) {
-    console.error(err.message);
-    if (err.kind === "ObjectId") {
+  } catch (error) {
+    console.error(error.message);
+    if (error.kind === "ObjectId") {
       return res.status(404).json({ message: "Employee not found." });
     }
     res.status(500).send("Server error");
