@@ -26,8 +26,6 @@ const getDepartmentById = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Department cannot be found.");
   }
-
-  res.json(departments);
 });
 
 //@description  Create a single department
@@ -89,11 +87,11 @@ const updateDepartmentById = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("User not found.");
+    throw new Error("Department not found.");
   }
 });
 
-//@description  Delete  a single department
+//@description  Delete a single department
 //@router       DELETE /api/department/:id
 //@access       Private
 

@@ -4,6 +4,9 @@ const roleSchema = mongoose.Schema({
   name: {
     type: String,
   },
+  company: {
+    type: String,
+  },
 });
 
 const Role = mongoose.model("Role", roleSchema);

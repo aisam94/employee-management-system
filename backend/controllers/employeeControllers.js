@@ -55,12 +55,14 @@ const addEmployee = asyncHandler(async (req, res) => {
     throw new Error("Employee already exists.");
   }
 
-  const newDepartment = await Department.create({
+  const newDepartment = await Department.findOne({
     name: department,
+    company: company,
   });
 
-  const newRole = await Role.create({
+  const newRole = await Role.findOne({
     name: role,
+    company: company,
   });
 
   const employee = await Employee.create({
@@ -99,13 +101,16 @@ const addEmployee = asyncHandler(async (req, res) => {
 
 const updateEmployeeById = asyncHandler(async (req, res) => {
   const employee = await Employee.findById(req.params.id);
+  const company = req.user.company;
 
-  const newDepartment = await Department.create({
+  const newDepartment = await Department.findOne({
     name: req.body.department,
+    company: company,
   });
 
-  const newRole = await Role.create({
+  const newRole = await Role.findOne({
     name: req.body.role,
+    company: company,
   });
 
   if (employee) {

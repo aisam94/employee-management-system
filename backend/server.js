@@ -5,6 +5,7 @@ import connectDB from "./config/connect.js";
 import employeeRoutes from "./routes/employeeRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import departmentRoutes from "./routes/departmentRoutes.js";
+import rolesRoutes from "./routes/rolesRoutes.js";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 app.use("/api/employees", employeeRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/department", departmentRoutes);
+app.use("/api/roles", rolesRoutes);
 
 app.listen(port, () => {
   //perform database connection when server starts
