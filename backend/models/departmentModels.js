@@ -7,7 +7,7 @@ const departmentSchema = mongoose.Schema({
   description: {
     type: String,
   },
-  picture: {
+  pictureUrl: {
     type: String,
   },
   company: {

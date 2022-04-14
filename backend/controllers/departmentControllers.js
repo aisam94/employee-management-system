@@ -33,7 +33,7 @@ const getDepartmentById = asyncHandler(async (req, res) => {
 //@access       Private
 
 const addDepartment = asyncHandler(async (req, res) => {
-  const { name, description } = req.body;
+  const { name, description, pictureUrl } = req.body;
   const company = req.user.company;
 
   // check if department already existed
@@ -41,6 +41,7 @@ const addDepartment = asyncHandler(async (req, res) => {
     name,
     description,
     company,
+    pictureUrl,
   });
 
   if (departmentExists) {
@@ -52,6 +53,7 @@ const addDepartment = asyncHandler(async (req, res) => {
     name,
     description,
     company,
+    pictureUrl,
   });
 
   if (department) {
@@ -60,6 +62,7 @@ const addDepartment = asyncHandler(async (req, res) => {
       name: department.name,
       description: department.description,
       company: department.company,
+      pictureUrl: department.pictureUrl,
     });
   } else {
     res.status(400);
@@ -77,13 +80,15 @@ const updateDepartmentById = asyncHandler(async (req, res) => {
   if (department) {
     department.name = req.body.name || department.name;
     department.description = req.body.description || department.description;
+    department.pictureUrl = req.body.pictureUrl || department.pictureUrl;
 
     const updatedDepartment = await department.save();
     return res.json({
-      _id: department._id,
-      name: department.name,
-      description: department.description,
-      company: department.company,
+      _id: updatedDepartment._id,
+      name: updatedDepartment.name,
+      description: updatedDepartment.description,
+      pictureUrl: updatedDepartment.pictureUrl,
+      company: updatedDepartment.company,
     });
   } else {
     res.status(404);

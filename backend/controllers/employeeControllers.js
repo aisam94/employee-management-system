@@ -39,7 +39,8 @@ const getEmployeeById = asyncHandler(async (req, res) => {
 //@access       Private
 
 const addEmployee = asyncHandler(async (req, res) => {
-  const { name, employeeId, email, picture, role, age, department } = req.body;
+  const { name, employeeId, email, role, age, department, pictureUrl } =
+    req.body;
   const company = req.user.company;
 
   //check if employee already exists
@@ -69,11 +70,12 @@ const addEmployee = asyncHandler(async (req, res) => {
     name: name,
     employeeId: employeeId,
     email: email,
-    picture: picture,
+    pictureUrl: pictureUrl,
     role: newRole,
     age: age,
     department: newDepartment,
     company: company,
+    pictureUrl: pictureUrl,
   });
 
   //return employee profile json
@@ -84,7 +86,7 @@ const addEmployee = asyncHandler(async (req, res) => {
       employeeId: employee.employeeId,
       email: employee.email,
       company: employee.company,
-      picture: employee.picture,
+      pictureUrl: employee.pictureUrl,
       role: employee.role,
       age: employee.age,
       department: employee.department,
@@ -116,7 +118,7 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
   if (employee) {
     employee.name = req.body.name || employee.name;
     employee.email = req.body.email || employee.email;
-    employee.picture = req.body.picture || employee.picture;
+    employee.pictureUrl = req.body.pictureUrl || employee.pictureUrl;
     employee.age = req.body.age || employee.age;
     employee.employeeId = req.body.employeeId || employee.employeeId;
     employee.role = newRole || employee.role;
@@ -127,7 +129,7 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
       _id: updatedEmployee._id,
       name: updatedEmployee.name,
       email: updatedEmployee.email,
-      picture: updatedEmployee.picture,
+      pictureUrl: updatedEmployee.pictureUrl,
       role: updatedEmployee.role,
       age: updatedEmployee.age,
       department: updatedEmployee.department,
