@@ -61,17 +61,21 @@ const addEmployee = asyncHandler(async (req, res) => {
     company: company,
   });
 
-  const newRole = await Role.findOne({
-    name: role,
-    company: company,
-  });
+  const newRoles = [];
+  for (let i = 0; i < 3; i++) {
+    const newRole = await Role.findOne({
+      name: role[i],
+      company: company,
+    });
+    newRoles.push(newRole);
+  }
 
   const employee = await Employee.create({
     name: name,
     employeeId: employeeId,
     email: email,
     pictureUrl: pictureUrl,
-    role: newRole,
+    role: newRoles,
     age: age,
     department: newDepartment,
     company: company,
