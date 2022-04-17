@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
@@ -15,9 +15,17 @@ const Department = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const [isRefresh, setIsRefresh] = useState(false);
+
+  async function deleteItem(department) {
+    await dispatch(deleteDepartment(department._id));
+    setIsRefresh(true);
+  }
+
   useEffect(() => {
     dispatch(listDepartments());
-  }, [dispatch]);
+    setIsRefresh(false);
+  }, [dispatch, isRefresh]);
 
   return (
     <>
@@ -67,7 +75,7 @@ const Department = () => {
                     <button
                       className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
                       onClick={() => {
-                        dispatch(deleteDepartment(department._id));
+                        deleteItem(department);
                       }}
                     >
                       Delete

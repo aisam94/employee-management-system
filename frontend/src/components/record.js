@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { deleteEmployee, listEmployees } from "../actions/employeeActions";
@@ -12,6 +12,8 @@ const Record = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const [isRefresh, setIsRefresh] = useState(false);
+
   const parseRole = (roles) => {
     let arr = [];
     for (let i = 0; i < 3; i++) {
@@ -22,9 +24,15 @@ const Record = () => {
     return arr.filter(Boolean).join();
   };
 
+  async function deleteItem(employee) {
+    await dispatch(deleteEmployee(employee._id));
+    setIsRefresh(true);
+  }
+
   useEffect(() => {
     dispatch(listEmployees());
-  }, [dispatch]);
+    setIsRefresh(false);
+  }, [dispatch, isRefresh]);
 
   return (
     <>
@@ -80,7 +88,7 @@ const Record = () => {
                     <button
                       className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
                       onClick={() => {
-                        dispatch(deleteEmployee(employee._id));
+                        deleteItem(employee);
                       }}
                     >
                       Delete

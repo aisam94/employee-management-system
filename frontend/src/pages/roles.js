@@ -16,15 +16,6 @@ const Roles = () => {
   const [roleInput, setRoleInput] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
 
-  // const parseRoles = (roles) => {
-  //   let arr = [];
-  //   for (let i = 0; i < roles.length; i++) {
-  //     arr.push(roles[i].name);
-  //   }
-  //   return arr;
-  // };
-  // const [rolesItems, setRolesItems] = useState(roles);
-
   const change = (event) => {
     setRoleInput(event.target.value);
   };
