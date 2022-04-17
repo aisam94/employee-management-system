@@ -16,6 +16,9 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+//have node serve the files for react app
+app.use(express.static(path.resolve(__dirname, "../frontend/build")));
+
 app.get("/", (req, res) => {
   res.send("API is running ...");
 });
