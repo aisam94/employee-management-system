@@ -25,7 +25,16 @@ export default function Navbar() {
         {/* <NavLink className="mx-2" to="/about">
           <h1>About</h1>
         </NavLink> */}
-        {userInfo ? (
+        {userInfo === undefined || userInfo.length === 0 ? (
+          <div className="flex">
+            <NavLink className="mx-2" to="/login">
+              <h1>Sign In</h1>
+            </NavLink>
+            <NavLink className="mx-2 text-orange-200 font-bold" to="/register">
+              <h1>Free Sign Up </h1>
+            </NavLink>
+          </div>
+        ) : (
           <div className="flex">
             <NavLink className="mx-2" to="/department">
               <h1>Departments</h1>
@@ -39,15 +48,6 @@ export default function Navbar() {
             <button className="text-orange-200 font-bold" onClick={logOut}>
               Logout
             </button>
-          </div>
-        ) : (
-          <div className="flex">
-            <NavLink className="mx-2" to="/login">
-              <h1>Sign In</h1>
-            </NavLink>
-            <NavLink className="mx-2 text-orange-200 font-bold" to="/register">
-              <h1>Free Sign Up </h1>
-            </NavLink>
           </div>
         )}
       </div>

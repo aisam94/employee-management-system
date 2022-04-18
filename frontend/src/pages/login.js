@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (userInfo) {
+    if (userInfo !== undefined && userInfo.length !== 0) {
       navigate("/record");
     }
   }, [navigate, userInfo]);
