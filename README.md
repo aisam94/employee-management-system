@@ -1,8 +1,21 @@
 # EMPLOYEE MANAGEMENT SYSTEM
 
-- This employee management system is a web application that enables users to create, store and manage their workforce records
+Setup frontend :
 
-- The system can manage and store details of employees
+- npm install --prefix frontend
+- npm run build --prefix frontend
+
+Start web server:
+
+- npm install
+- npm start
+
+---
+
+Website:
+
+- This employee management system is a web application that enables users to create, store and manage their workforce records
+- The codebase is separated into frontend and backend for easier developments.
 
 ---
 
@@ -15,6 +28,12 @@ This web application is built with:
 
 ---
 
-The codebase is separated into frontend and backend for easier developments.
+The different part of this website is as follows:
+
+- Login Page
+- Register Page
+- Employee Records
+- Departments List
+- Roles List
 
 ---
