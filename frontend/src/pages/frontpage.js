@@ -8,11 +8,11 @@ const FrontPage = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  useEffect(() => {
-    if (userInfo) {
-      navigate("/record");
-    }
-  }, [navigate, userInfo]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     navigate("/record");
+  //   }
+  // }, [navigate, userInfo]);
 
   return (
     <main className="flex flex-col items-center ">
