@@ -114,10 +114,15 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
     company: company,
   });
 
-  const newRole = await Role.findOne({
-    name: req.body.role,
-    company: company,
-  });
+  const newRoles = [];
+  for (let i = 0; i < 3; i++) {
+    const newRole = await Role.findOne({
+      // name: req.body.role,
+      name: req.body.role[i],
+      company: company,
+    });
+    newRoles.push(newRole);
+  }
 
   if (employee) {
     employee.name = req.body.name || employee.name;
@@ -125,7 +130,8 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
     employee.pictureUrl = req.body.pictureUrl || employee.pictureUrl;
     employee.age = req.body.age || employee.age;
     employee.employeeId = req.body.employeeId || employee.employeeId;
-    employee.role = newRole || employee.role;
+    // employee.role = newRoles || employee.role;
+    employee.role = newRoles;
     employee.department = newDepartment || employee.department;
 
     const updatedEmployee = await employee.save();
