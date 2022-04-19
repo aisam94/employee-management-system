@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { listRoles, deleteRole } from "../actions/rolesActions";
 import { PlusIcon } from "@heroicons/react/solid";
 import { addRole } from "../actions/rolesActions";
+import Loading from "../components/loading";
 
 const Roles = () => {
   const navigate = useNavigate();
@@ -73,30 +74,36 @@ const Roles = () => {
           </thead>
 
           <tbody>
-            {roles.map((role, index) => (
-              <tr
-                key={index}
-                className="font-thin odd:bg-white even:bg-gray-200 hover:bg-purple-50 text-md"
-              >
-                <th>{role.name}</th>
-                <th className="flex justify-around items-center ">
-                  <NavLink
-                    className="bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
-                    to={`/editrole/${role._id}`}
-                  >
-                    Edit
-                  </NavLink>
-                  <button
-                    className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
-                    onClick={() => {
-                      deleteItem(role);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </th>
-              </tr>
-            ))}
+            {loading ? (
+              <td className="text-center" colspan="2">
+                <Loading />
+              </td>
+            ) : (
+              roles.map((role, index) => (
+                <tr
+                  key={index}
+                  className="odd:bg-white even:bg-gray-200 hover:bg-purple-100 text-md"
+                >
+                  <td className="text-center">{role.name}</td>
+                  <td className="flex justify-around items-center ">
+                    <NavLink
+                      className="bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
+                      to={`/editrole/${role._id}`}
+                    >
+                      Edit
+                    </NavLink>
+                    <button
+                      className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
+                      onClick={() => {
+                        deleteItem(role);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </main>

@@ -6,6 +6,7 @@ import {
   deleteDepartment,
 } from "../actions/departmentActions";
 import { PlusIcon } from "@heroicons/react/solid";
+import Loading from "../components/loading";
 
 const Department = () => {
   const navigate = useNavigate();
@@ -54,36 +55,45 @@ const Department = () => {
           </thead>
 
           <tbody>
-            {departments.map((department, index) => (
-              <tr
-                key={index}
-                className="font-thin odd:bg-white even:bg-gray-200 hover:bg-purple-50 text-md text-left "
-              >
-                <th className="flex items-center">
-                  <img src={department.pictureUrl} className="h-10 w-10 mx-3" />
-                  <span>{department.name}</span>
-                </th>
-                <th>{department.description}</th>
-                <th className="">
-                  <div className="flex">
-                    <NavLink
-                      className="bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
-                      to={`/editdepartment/${department._id}`}
-                    >
-                      Edit
-                    </NavLink>
-                    <button
-                      className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
-                      onClick={() => {
-                        deleteItem(department);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </th>
-              </tr>
-            ))}
+            {loading ? (
+              <td className="text-center" colspan="3">
+                <Loading />
+              </td>
+            ) : (
+              departments.map((department, index) => (
+                <tr
+                  key={index}
+                  className="odd:bg-white even:bg-gray-200 hover:bg-purple-100 text-md text-left "
+                >
+                  <td className="flex items-center">
+                    <img
+                      src={department.pictureUrl}
+                      className="h-10 w-10 mx-3"
+                    />
+                    <span>{department.name}</span>
+                  </td>
+                  <td>{department.description}</td>
+                  <td className="">
+                    <div className="flex">
+                      <NavLink
+                        className="bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
+                        to={`/editdepartment/${department._id}`}
+                      >
+                        Edit
+                      </NavLink>
+                      <button
+                        className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
+                        onClick={() => {
+                          deleteItem(department);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </main>

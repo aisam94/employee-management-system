@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { deleteEmployee, listEmployees } from "../actions/employeeActions";
 import { PlusIcon } from "@heroicons/react/solid";
+import Loading from "./loading";
 
 const Record = () => {
   const navigate = useNavigate();
@@ -62,41 +63,47 @@ const Record = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            {employees.map((employee, index) => (
-              <tr
-                key={index}
-                className="font-thin odd:bg-white even:bg-gray-200 hover:bg-purple-50 text-md align-middle"
-              >
-                <th className="flex items-center">
-                  <img src={employee.pictureUrl} className="h-10 w-10 mx-3" />
-                  <span>{employee.name}</span>
-                </th>
-                <th>{employee.employeeId}</th>
-                <th>{parseRole(employee.role)}</th>
-                <th>{employee.department.name}</th>
-                <th>{employee.age}</th>
-                <th>{employee.email}</th>
-                <th className="">
-                  <div className="flex">
-                    <NavLink
-                      className="bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
-                      to={`/editemployee/${employee._id}`}
-                    >
-                      Edit
-                    </NavLink>
-                    <button
-                      className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
-                      onClick={() => {
-                        deleteItem(employee);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </th>
-              </tr>
-            ))}
+          <tbody className="">
+            {loading ? (
+              <td className="text-center" colspan="7">
+                <Loading />
+              </td>
+            ) : (
+              employees.map((employee, index) => (
+                <tr
+                  key={index}
+                  className="odd:bg-white even:bg-gray-200 hover:bg-purple-100 text-md align-middle"
+                >
+                  <td className="flex items-center">
+                    <img src={employee.pictureUrl} className="h-10 w-10 mx-3" />
+                    <span>{employee.name}</span>
+                  </td>
+                  <td>{employee.employeeId}</td>
+                  <td>{parseRole(employee.role)}</td>
+                  <td>{employee.department.name}</td>
+                  <td>{employee.age}</td>
+                  <td>{employee.email}</td>
+                  <td className="">
+                    <div className="flex">
+                      <NavLink
+                        className="bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
+                        to={`/editemployee/${employee._id}`}
+                      >
+                        Edit
+                      </NavLink>
+                      <button
+                        className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
+                        onClick={() => {
+                          deleteItem(employee);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </main>
