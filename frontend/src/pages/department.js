@@ -56,9 +56,11 @@ const Department = () => {
 
           <tbody>
             {loading ? (
-              <td className="text-center" colspan="3">
-                <Loading />
-              </td>
+              <tr>
+                <td className="text-center" colSpan="3">
+                  <Loading />
+                </td>
+              </tr>
             ) : (
               departments.map((department, index) => (
                 <tr

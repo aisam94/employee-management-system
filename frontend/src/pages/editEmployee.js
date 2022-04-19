@@ -16,12 +16,22 @@ const EditEmployee = () => {
   const { loading, error, employees } = employeesList;
   const params = useParams();
 
+  const parseRoles = (roles) => {
+    let arr = [];
+    for (let i = 0; i < 3; i++) {
+      if (roles[i]) {
+        arr.push(roles[i].name);
+      }
+    }
+    return arr;
+  };
+
   const employee = employees.find((employee) => employee._id === params.id);
   const [formData, setFormData] = useState({
     name: employee.name,
     email: employee.email,
     employeeId: employee.employeeId,
-    role: employee.role,
+    role: parseRoles(employee.role),
     department: employee.department.name,
     age: employee.age,
     pictureUrl: employee.pictureUrl,
@@ -69,11 +79,23 @@ const EditEmployee = () => {
     }
   };
 
-  const getRoleName = (role) => {
-    if (role) {
-      return role.name;
+  const changeRole = (event) => {
+    switch (event.target.name) {
+      case "role1":
+        role[0] = event.target.value;
+        setFormData({ ...formData, [role]: role });
+        break;
+      case "role2":
+        role[1] = event.target.value;
+        setFormData({ ...formData, [role]: role });
+        break;
+      case "role3":
+        role[2] = event.target.value;
+        setFormData({ ...formData, [role]: role });
+        break;
+      default:
+        console.log("Error inserting roles.");
     }
-    return "";
   };
 
   useEffect(() => {
@@ -146,12 +168,10 @@ const EditEmployee = () => {
               <span className="text-gray-400">Roles (Max 3 roles)</span>
               <select
                 className="px-2 py-1 border border-gray-300 appearance-none bg-white text-black focus:outline-none focus:border-indigo-500 shadow"
-                onChange={(event) => change(event)}
-                name="role"
+                onChange={(event) => changeRole(event)}
+                name="role1"
               >
-                <option value={getRoleName(role[0])}>
-                  -- {getRoleName(role[0])} --
-                </option>
+                <option value={role[0]}>-- {role[0]} --</option>
                 <option value="">None</option>
                 {roles.map((role, index) => (
                   <option key={index} value={role.name}>
@@ -162,12 +182,10 @@ const EditEmployee = () => {
 
               <select
                 className="px-2 py-1 border border-gray-300 appearance-none bg-white text-black focus:outline-none focus:border-indigo-500 shadow"
-                onChange={(event) => change(event)}
-                name="role"
+                onChange={(event) => changeRole(event)}
+                name="role2"
               >
-                <option value={getRoleName(role[1])}>
-                  -- {getRoleName(role[1])} --
-                </option>
+                <option value={role[1]}>-- {role[1]} --</option>
                 <option value="">None</option>
                 {roles.map((role, index) => (
                   <option key={index} value={role.name}>
@@ -178,12 +196,10 @@ const EditEmployee = () => {
 
               <select
                 className="px-2 py-1 border border-gray-300 appearance-none bg-white text-black focus:outline-none focus:border-indigo-500 shadow"
-                onChange={(event) => change(event)}
-                name="role"
+                onChange={(event) => changeRole(event)}
+                name="role3"
               >
-                <option value={getRoleName(role[2])}>
-                  -- {getRoleName(role[2])} --
-                </option>
+                <option value={role[2]}>-- {role[2]} --</option>
                 <option value="">None</option>
                 {roles.map((role, index) => (
                   <option key={index} value={role.name}>

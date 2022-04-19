@@ -75,9 +75,11 @@ const Roles = () => {
 
           <tbody>
             {loading ? (
-              <td className="text-center" colspan="2">
-                <Loading />
-              </td>
+              <tr>
+                <td className="text-center" colSpan="2">
+                  <Loading />
+                </td>
+              </tr>
             ) : (
               roles.map((role, index) => (
                 <tr

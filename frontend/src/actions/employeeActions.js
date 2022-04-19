@@ -36,7 +36,6 @@ export const addEmployee =
   ({ name, email, employeeId, role, department, age, pictureUrl }) =>
   async (dispatch, getState) => {
     try {
-      console.log({ role });
       dispatch({ type: "EMPLOYEES_ADD_REQUEST" });
 
       const {

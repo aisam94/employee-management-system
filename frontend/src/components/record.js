@@ -65,9 +65,11 @@ const Record = () => {
           </thead>
           <tbody className="">
             {loading ? (
-              <td className="text-center" colspan="7">
-                <Loading />
-              </td>
+              <tr>
+                <td className="text-center" colSpan="7">
+                  <Loading />
+                </td>
+              </tr>
             ) : (
               employees.map((employee, index) => (
                 <tr

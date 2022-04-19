@@ -16,7 +16,7 @@ const AddEmployee = () => {
     name: "",
     email: "",
     employeeId: "",
-    role: [],
+    role: ["", "", ""],
     department: "",
     age: "",
     pictureUrl: "",
