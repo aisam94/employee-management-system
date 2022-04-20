@@ -14,6 +14,7 @@ import AddDepartment from "./pages/addDepartment";
 import EditDepartment from "./pages/editDepartment";
 import Roles from "./pages/roles";
 import EditRole from "./pages/editRole";
+import AuthWrapper from "./components/authWrapper";
 import "react-notifications/lib/notifications.css";
 
 const App = () => {
@@ -30,16 +31,22 @@ const App = () => {
 
         {/* page that need authorization */}
 
-        <Route exact path="/roles" element={<Roles />} />
-        <Route exact path="/editrole/:id" element={<EditRole />} />
+        <Route element={<AuthWrapper />}>
+          <Route exact path="/roles" element={<Roles />} />
+          <Route exact path="/editrole/:id" element={<EditRole />} />
 
-        <Route exact path="/department" element={<Department />} />
-        <Route exact path="/adddepartment" element={<AddDepartment />} />
-        <Route exact path="/editdepartment/:id" element={<EditDepartment />} />
+          <Route exact path="/department" element={<Department />} />
+          <Route exact path="/adddepartment" element={<AddDepartment />} />
+          <Route
+            exact
+            path="/editdepartment/:id"
+            element={<EditDepartment />}
+          />
 
-        <Route exact path="/record" element={<Record />} />
-        <Route exact path="/addemployee" element={<AddEmployee />} />
-        <Route exact path="/editemployee/:id" element={<EditEmployee />} />
+          <Route exact path="/record" element={<Record />} />
+          <Route exact path="/addemployee" element={<AddEmployee />} />
+          <Route exact path="/editemployee/:id" element={<EditEmployee />} />
+        </Route>
       </Routes>
       <Footer />
     </>

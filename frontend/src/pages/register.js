@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../actions/userActions";
+import { isExpired } from "react-jwt";
 
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
+  const token = userInfo ? userInfo.token : "";
 
   const submit = (event) => {
     event.preventDefault();
@@ -33,7 +35,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (userInfo !== undefined && userInfo.length !== 0) {
+    if (userInfo && userInfo.length !== 0 && !isExpired(token)) {
       navigate("/record");
     }
   }, [navigate, userInfo]);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions";
+import { isExpired } from "react-jwt";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
+  const token = userInfo ? userInfo.token : "";
 
   const change = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -25,7 +27,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (userInfo !== undefined && userInfo.length !== 0) {
+    if (userInfo && userInfo.length !== 0 && !isExpired(token)) {
       navigate("/record");
     }
   }, [navigate, userInfo]);
