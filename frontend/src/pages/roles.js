@@ -42,7 +42,9 @@ const Roles = () => {
   return (
     <>
       <main className="flex flex-col items-center">
-        <h2 className="text-center text-lg font-bold mt-4">Roles List</h2>
+        <h2 className="text-center text-base md:text-lg font-bold mt-4">
+          Roles List
+        </h2>
 
         <form
           id="roleInputForm"
@@ -53,7 +55,7 @@ const Roles = () => {
             type="text"
             aria-label="Enter new role"
             placeholder="Enter new role..."
-            className=" w-full p-1 m-2 bg-gray-100 border border-gray-400 outline-none text-center"
+            className="text-sm md:text-base w-full p-1 m-2 bg-gray-100 border border-gray-400 outline-none text-center"
             value={roleInput}
             onChange={change}
           />
@@ -65,15 +67,15 @@ const Roles = () => {
           </button>
         </form>
 
-        <table className="border-collapse shadow  w-1/2">
+        <table className="border-collapse shadow w-2/3 md:w-1/2">
           <thead>
-            <tr className="text-lg text-white bg-purple-400">
+            <tr className="text-sm md:text-lg text-white bg-purple-400">
               <th>Roles Name</th>
               <th className="text-center">Action</th>
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="text-sm md:text-base">
             {loading ? (
               <tr>
                 <td className="text-center" colSpan="2">

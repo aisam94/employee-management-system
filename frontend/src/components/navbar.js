@@ -17,9 +17,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex justify-between items-center bg-purple-700 shadow-lg text-white py-3 px-2">
+    <nav className="flex flex-col w-full md:flex-row md:justify-between items-center bg-purple-700 shadow-lg text-white py-3 px-2">
+      {/* Logo and company */}
       <div className="flex items-center">
-        <UserGroupIcon className="h-9 w-9 mx-4" onClick={() => navigate("/")} />
+        <UserGroupIcon
+          className="h-9 w-9 mx-4 hidden md:inline"
+          onClick={() => navigate("/")}
+        />
         {userInfo && !isExpired(token) && (
           <h1 className="text-lg">{userInfo.company}</h1>
         )}
@@ -47,9 +51,9 @@ export default function Navbar() {
               <h1>Roles</h1>
             </NavLink>
             <NavLink className="mx-2" to="/record">
-              <h1>Employee records</h1>
+              <h1>Employees</h1>
             </NavLink>
-            <button className="text-orange-200 font-bold" onClick={logOut}>
+            <button className="text-orange-200 font-bold mx-2" onClick={logOut}>
               Logout
             </button>
           </div>

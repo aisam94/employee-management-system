@@ -42,7 +42,7 @@ const Register = () => {
 
   return (
     <>
-      <main className="flex flex-col items-center justify-center space-y-5 pt-4 mt-20">
+      <main className="flex flex-col items-center justify-center space-y-5 pt-4 mt-5 md:mt-20">
         <h1 className="font-bold text-3xl">Register your account</h1>
         {/* Form */}
         <form className="flex flex-col space-y-4" onSubmit={(e) => submit(e)}>

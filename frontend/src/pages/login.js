@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <>
-      <main className="flex flex-col items-center justify-center  space-y-5 pt-4 mt-20">
+      <main className="flex flex-col items-center justify-center  space-y-5 pt-4 mt-5 md:mt-20">
         <h1 className="text-3xl font-bold">Sign in to your account</h1>
 
         {/* Form */}
