@@ -40,7 +40,7 @@ const AddDepartment = () => {
   };
 
   return (
-    <>
+    <div className="mb-12">
       <NotificationContainer />
       <button
         className="bg-purple-500 hover:bg-purple-600 text-white p-2 m-2 flex items-center space-x-2"
@@ -112,7 +112,7 @@ const AddDepartment = () => {
           />
         </form>
       </main>
-    </>
+    </div>
   );
 };
 

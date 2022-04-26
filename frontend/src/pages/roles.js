@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { listRoles, deleteRole } from "../actions/rolesActions";
-import { PlusIcon } from "@heroicons/react/solid";
+import { PlusIcon, XIcon, PencilAltIcon } from "@heroicons/react/solid";
 import { addRole } from "../actions/rolesActions";
 import Loading from "../components/loading";
 
@@ -61,7 +61,7 @@ const Roles = () => {
           />
           <button type="submit" form="roleInputForm">
             <PlusIcon
-              className="h-8 w-8 bg-purple-400 text-white p-1"
+              className="h-8 w-8 bg-purple-500 hover:bg-purple-600 text-white p-1"
               onClick={submit}
             />
           </button>
@@ -90,19 +90,21 @@ const Roles = () => {
                 >
                   <td className="text-center">{role.name}</td>
                   <td className="flex justify-around items-center ">
+                    {/* Edit */}
                     <NavLink
-                      className="bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
+                      className="flex items-center justify-center bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
                       to={`/editrole/${role._id}`}
                     >
-                      Edit
+                      <PencilAltIcon className="h-5 w-5" />
                     </NavLink>
+                    {/* Delete */}
                     <button
-                      className="bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
+                      className="flex items-center justify-center bg-red-500 text-white w-1/2 font-normal hover:bg-red-600"
                       onClick={() => {
                         deleteItem(role);
                       }}
                     >
-                      Delete
+                      <XIcon className="h-5 w-5" />
                     </button>
                   </td>
                 </tr>
