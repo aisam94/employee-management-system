@@ -5,7 +5,7 @@ export const rolesListReducer = (state = { roles: [] }, action) => {
     case "ROLE_LIST_SUCCESS":
       return { loading: false, roles: action.payload };
     case "ROLE_LIST_FAIL":
-      return { loading: false, error: action.payload };
+      return { loading: false, roles: [], error: action.payload };
     default:
       return state;
   }
