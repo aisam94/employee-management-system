@@ -15,7 +15,7 @@ const FrontPage = () => {
   // }, [navigate, userInfo]);
 
   return (
-    <main className="flex flex-col items-center ">
+    <main className="flex flex-col items-center mb-12">
       <h1 className="font-bold text-3xl mt-10 text-center">
         Manage your employee data with simplicity
       </h1>

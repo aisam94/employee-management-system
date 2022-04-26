@@ -40,7 +40,7 @@ const Roles = () => {
   }, [dispatch, isSubmit]);
 
   return (
-    <>
+    <div className="mb-12">
       <main className="flex flex-col items-center">
         <h2 className="text-center text-base md:text-lg font-bold mt-4">
           Roles List
@@ -111,7 +111,7 @@ const Roles = () => {
           </tbody>
         </table>
       </main>
-    </>
+    </div>
   );
 };
 

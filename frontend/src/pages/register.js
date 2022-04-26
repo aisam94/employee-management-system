@@ -41,7 +41,7 @@ const Register = () => {
   }, [navigate, userInfo]);
 
   return (
-    <>
+    <div className="mb-12">
       <main className="flex flex-col items-center justify-center space-y-5 pt-4 mt-5 md:mt-20">
         <h1 className="font-bold text-3xl">Register your account</h1>
         {/* Form */}
@@ -114,7 +114,7 @@ const Register = () => {
           Already have an account? Sign in here.
         </NavLink>
       </main>
-    </>
+    </div>
   );
 };
 
