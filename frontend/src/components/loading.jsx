@@ -5,7 +5,7 @@ const Loading = () => {
     <div className="w-full h-full py-2">
       <svg
         role="status"
-        className="inline mr-2 w-9 h-9 text-gray-200 animate-spin dark:text-gray-300 fill-purple-600"
+        className="inline mr-2 w-9 h-9 text-gray animate-spin dark:text-gray-focus fill-primary"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

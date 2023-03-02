@@ -45,7 +45,7 @@ const EditDepartment = () => {
   return (
     <div className="mb-12">
       <button
-        className="bg-purple-500 hover:bg-purple-600 text-white p-2 m-2 flex items-center space-x-2"
+        className="bg-secondary hover:bg-secondary-focus text-white p-2 m-2 flex items-center space-x-2"
         onClick={() => {
           navigate("/department");
         }}
@@ -66,7 +66,7 @@ const EditDepartment = () => {
               placeholder="Name"
               name="name"
               value={name}
-              className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+              className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
               onChange={(event) => change(event)}
               required
             />
@@ -79,7 +79,7 @@ const EditDepartment = () => {
               value={description}
               rows="10"
               cols="40"
-              className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+              className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
               onChange={(event) => change(event)}
             />
           </div>
@@ -94,7 +94,7 @@ const EditDepartment = () => {
               placeholder="Picture"
               name="picture"
               accept="image/png, image/jpeg"
-              className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+              className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
             />
             <span>Or</span>
             <input
@@ -102,7 +102,7 @@ const EditDepartment = () => {
               placeholder="Picture URL"
               name="pictureUrl"
               value={pictureUrl}
-              className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+              className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
               onChange={(event) => change(event)}
             />
           </div>
@@ -111,7 +111,7 @@ const EditDepartment = () => {
           <input
             type="submit"
             value="UPDATE"
-            className="py-2 text-white bg-purple-700  hover:bg-purple-800"
+            className="py-2 text-white bg-secondary  hover:bg-secondary-focus"
           />
         </form>
       </main>

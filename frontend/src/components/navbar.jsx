@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex flex-col w-full md:flex-row md:justify-between items-center bg-purple-700 shadow-lg text-white py-3 px-2">
+    <nav className="flex flex-col w-full md:flex-row md:justify-between items-center bg-primary shadow-lg text-white py-3 px-2">
       {/* Logo and company */}
       <div className="flex items-center">
         <img
@@ -39,7 +39,7 @@ export default function Navbar() {
             <NavLink className="mx-2" to="/login">
               <h1>Sign In</h1>
             </NavLink>
-            <NavLink className="mx-2 text-orange-200 font-bold" to="/register">
+            <NavLink className="mx-2 text-accent font-bold" to="/register">
               <h1>Free Sign Up </h1>
             </NavLink>
           </div>
@@ -54,7 +54,7 @@ export default function Navbar() {
             <NavLink className="mx-2" to="/record">
               <h1>Employees</h1>
             </NavLink>
-            <button className="text-orange-200 font-bold mx-2" onClick={logOut}>
+            <button className="text-accent font-bold mx-2" onClick={logOut}>
               Logout
             </button>
           </div>

@@ -42,7 +42,7 @@ const Record = () => {
         </h2>
         <div>
           <button
-            className="bg-purple-500 text-sm md:text-base text-white p-1 m-2 ml-4 shadow flex items-center justify-center hover:bg-purple-600"
+            className="bg-secondary hover:bg-secondary-focus text-sm md:text-base text-white p-1 m-2 ml-4 shadow flex items-center justify-center"
             onClick={() => {
               navigate("/addemployee");
             }}
@@ -55,7 +55,7 @@ const Record = () => {
         <div className="overflow-x-auto md:overflow-visible w-full">
           <table className="border-collapse w-full shadow border border-slate-500">
             <thead>
-              <tr className="text-sm md:text-lg text-white bg-purple-400 text-left">
+              <tr className="text-sm md:text-lg text-white bg-primary text-left">
                 <th>Name</th>
                 <th>Employee Id</th>
                 <th>Role</th>
@@ -76,7 +76,7 @@ const Record = () => {
                 employees.map((employee, index) => (
                   <tr
                     key={index}
-                    className="odd:bg-white even:bg-gray-200 hover:bg-purple-100 text-md align-middle"
+                    className="odd:bg-white even:bg-gray hover:bg-primary-light text-md align-middle"
                   >
                     <td className="flex items-center w-20">
                       <img
@@ -94,14 +94,14 @@ const Record = () => {
                       <div className="flex">
                         {/* Edit */}
                         <NavLink
-                          className="flex items-center justify-center bg-purple-500 hover:bg-purple-600 text-white w-1/2 font-normal text-center"
+                          className="flex items-center justify-center bg-secondary hover:bg-secondary-focus text-white w-1/2 font-normal text-center"
                           to={`/editemployee/${employee._id}`}
                         >
                           <img className="h-5 w-5" src="/icons/edit-pencil.svg"/>
                         </NavLink>
                         {/* Delete */}
                         <button
-                          className="flex items-center justify-center bg-red-500 hover:bg-red-600 text-white w-1/2 "
+                          className="flex items-center justify-center bg-red hover:bg-red-focus text-white w-1/2 "
                           onClick={() => {
                             deleteItem(employee);
                           }}

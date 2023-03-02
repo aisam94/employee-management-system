@@ -50,7 +50,7 @@ const Login = () => {
               placeholder="Email address"
               name="email"
               value={email}
-              className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500"
+              className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary"
               onChange={(event) => change(event)}
               required
             />
@@ -61,7 +61,7 @@ const Login = () => {
               placeholder="Password"
               name="password"
               value={password}
-              className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500"
+              className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary"
               onChange={(event) => change(event)}
               required
             />
@@ -71,7 +71,7 @@ const Login = () => {
           <input
             type="submit"
             value="LOGIN"
-            className="py-2 text-white bg-purple-700  hover:bg-purple-800"
+            className="py-2 text-white bg-secondary  hover:bg-secondary-focus"
           />
         </form>
 
@@ -82,21 +82,21 @@ const Login = () => {
               id="remember-me"
               name="remember-me"
               type="checkbox"
-              className="w-4 h-4 text-indigo-600 border-gray-300  focus:ring-indigo-500"
+              className="w-4 h-4 text-primary border-gray  focus:ring-primary"
             />
-            <label htmlFor="remember-me" className="ml-2 block text-gray-900">
+            <label htmlFor="remember-me" className="ml-2 block">
               Remember me
             </label>
           </div>
 
           {/* Forgot password */}
-          <button className="text-blue-400 hover:text-blue-600">
+          <button className="text-primary hover:text-primary-focus">
             Forgot your password?
           </button>
         </div>
 
         {/* Dont have acc. register here */}
-        <NavLink to="/register" className="text-blue-400 hover:text-blue-600">
+        <NavLink to="/register" className="text-primary hover:text-primary-focus">
           Do not have an account? Register here.
         </NavLink>
       </main>

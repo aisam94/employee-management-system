@@ -53,7 +53,7 @@ const Register = () => {
               placeholder="Name"
               name="name"
               value={name}
-              className="appearance-none border border-gray-300 py-1 px-2 focus:outline-none focus:border-indigo-500"
+              className="appearance-none border border-gray py-1 px-2 focus:outline-none focus:border-primary"
               onChange={(e) => change(e)}
               required
             />
@@ -64,7 +64,7 @@ const Register = () => {
               placeholder="Email address"
               name="email"
               value={email}
-              className="appearance-none border border-gray-300 py-1 px-2 focus:outline-none focus:border-indigo-500"
+              className="appearance-none border border-gray py-1 px-2 focus:outline-none focus:border-primary"
               onChange={(e) => change(e)}
               required
             />
@@ -75,7 +75,7 @@ const Register = () => {
               placeholder="Company name"
               name="company"
               value={company}
-              className="appearance-none border border-gray-300 py-1 px-2 focus:outline-none focus:border-indigo-500"
+              className="appearance-none border border-gray py-1 px-2 focus:outline-none focus:border-primary"
               onChange={(e) => change(e)}
               required
             />
@@ -86,7 +86,7 @@ const Register = () => {
               placeholder="Password"
               name="password"
               value={password}
-              className="appearance-none border border-gray-300 py-1 px-2 focus:outline-none focus:border-indigo-500"
+              className="appearance-none border border-gray py-1 px-2 focus:outline-none focus:border-primary"
               onChange={(e) => change(e)}
               required
             />
@@ -97,20 +97,20 @@ const Register = () => {
               placeholder="Reenter password"
               name="confirmPassword"
               value={confirmPassword}
-              className="appearance-none border border-gray-300 py-1 px-2 focus:outline-none focus:border-indigo-500"
+              className="appearance-none border border-gray py-1 px-2 focus:outline-none focus:border-primary"
               onChange={(e) => change(e)}
               required
             />
           </div>
           {/* Register button */}
           <input
-            className="text-white py-4 bg-purple-700 hover:bg-purple-800"
+            className="text-white py-4 bg-secondary hover:bg-secondary-focus"
             type="submit"
             value="REGISTER"
           />
         </form>
         {/* Already have an account?  */}
-        <NavLink to="/login" className="text-blue-400 hover:text-blue-600">
+        <NavLink to="/login" className="text-primary hover:text-primary-focus">
           Already have an account? Sign in here.
         </NavLink>
       </main>

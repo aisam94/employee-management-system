@@ -90,7 +90,7 @@ const EditEmployee = () => {
     <div className="mb-12">
       {/* <NotificationContainer /> */}
       <button
-        className="bg-purple-500 hover:bg-purple-600 text-white p-2 m-2 flex items-center space-x-2"
+        className="bg-secondary hover:bg-secondary-focus text-white p-2 m-2 flex items-center space-x-2"
         onClick={() => {
           navigate("/record");
         }}
@@ -107,12 +107,12 @@ const EditEmployee = () => {
           <div className="flex flex-col space-y-2 mb-5">
             {/*Name*/}
             <div className="flex flex-col">
-              <span className="text-gray-400">Name</span>
+              <span className="text-gray">Name</span>
               <input
                 type="text"
                 name="name"
                 value={name}
-                className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
                 onChange={(event) => change(event)}
                 required
               />
@@ -120,12 +120,12 @@ const EditEmployee = () => {
 
             {/*Email*/}
             <div className="flex flex-col">
-              <span className="text-gray-400">Email</span>
+              <span className="text-gray">Email</span>
               <input
                 type="email"
                 name="email"
                 value={email}
-                className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
                 onChange={(event) => change(event)}
                 required
               />
@@ -133,12 +133,12 @@ const EditEmployee = () => {
 
             {/*Employee Id*/}
             <div className="flex flex-col">
-              <span className="text-gray-400">Employee ID</span>
+              <span className="text-gray">Employee ID</span>
               <input
                 type="number"
                 name="employeeId"
                 value={employeeId}
-                className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
                 onChange={(event) => change(event)}
                 required
               />
@@ -147,9 +147,9 @@ const EditEmployee = () => {
             {/*Role*/}
 
             <div className="flex flex-col">
-              <span className="text-gray-400">Roles (Max 3 roles)</span>
+              <span className="text-gray">Roles (Max 3 roles)</span>
               <select
-                className="px-2 py-1 border border-gray-300 appearance-none bg-white text-black focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none bg-white text-black focus:outline-none focus:border-primary shadow"
                 onChange={(event) => changeRole(event)}
                 name="role1"
               >
@@ -163,7 +163,7 @@ const EditEmployee = () => {
               </select>
 
               <select
-                className="px-2 py-1 border border-gray-300 appearance-none bg-white text-black focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none bg-white text-black focus:outline-none focus:border-primary shadow"
                 onChange={(event) => changeRole(event)}
                 name="role2"
               >
@@ -177,7 +177,7 @@ const EditEmployee = () => {
               </select>
 
               <select
-                className="px-2 py-1 border border-gray-300 appearance-none bg-white text-black focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none bg-white text-black focus:outline-none focus:border-primary shadow"
                 onChange={(event) => changeRole(event)}
                 name="role3"
               >
@@ -194,9 +194,9 @@ const EditEmployee = () => {
             {/*Department*/}
 
             <div className="flex flex-col">
-              <span className="text-gray-400">Department</span>
+              <span className="text-gray">Department</span>
               <select
-                className="px-2 py-1 border border-gray-300 appearance-none bg-white text-black focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none bg-white text-black focus:outline-none focus:border-primary shadow"
                 onChange={(event) => change(event)}
                 name="department"
               >
@@ -211,13 +211,13 @@ const EditEmployee = () => {
 
             {/*Age*/}
             <div className="flex flex-col">
-              <span className="text-gray-400">Age</span>
+              <span className="text-gray">Age</span>
               <input
                 type="number"
                 placeholder="Age"
                 name="age"
                 value={age}
-                className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
                 onChange={(event) => change(event)}
                 required
               />
@@ -225,7 +225,7 @@ const EditEmployee = () => {
 
             {/* Picture */}
             <div className="flex flex-col space-y-1 ">
-              <label htmlFor="file" className="text-gray-400">
+              <label htmlFor="file" className="text-gray">
                 Profile picture
               </label>
               <input
@@ -234,15 +234,15 @@ const EditEmployee = () => {
                 placeholder="Picture"
                 name="picture"
                 accept="image/png, image/jpeg"
-                className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
               />
-              <span className="text-gray-400">Or</span>
+              <span className="text-gray">Or</span>
               <input
                 type="text"
                 placeholder="Picture URL"
                 name="pictureUrl"
                 value={pictureUrl}
-                className="px-2 py-1 border border-gray-300 appearance-none focus:outline-none focus:border-indigo-500 shadow"
+                className="px-2 py-1 border border-gray appearance-none focus:outline-none focus:border-primary shadow"
                 onChange={(event) => change(event)}
               />
             </div>
@@ -252,7 +252,7 @@ const EditEmployee = () => {
           <input
             type="submit"
             value="UPDATE"
-            className="py-2 text-white bg-purple-700  hover:bg-purple-800"
+            className="py-2 text-white bg-secondary  hover:bg-secondary-focus"
           />
         </form>
       </main>

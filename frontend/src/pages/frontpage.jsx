@@ -17,16 +17,16 @@ const FrontPage = () => {
   return (
     <main className="flex flex-col items-center mb-12">
       <h1 className="font-bold text-3xl mt-10 text-center">
-        Manage your employee data with simplicity
+        Manage your employee's data with simplicity
       </h1>
-      <p className="text-xl text-justify mx-auto my-10 w-2/3 md:w-1/2 md:leading-loose ">
+      <p className="text-xl text-justify mx-auto my-10 w-2/3 md:w-1/2 md:leading-loose">
         Fulfill your organization's management needs with this website. Gain
         better understanding of your entire workforce with a proper system. Get
         started by creating an account or login if you already have one.
       </p>
       <NavLink
         to="/register"
-        className="m-2 p-5 text-white bg-purple-700  hover:bg-purple-800"
+        className="m-2 p-5 text-white bg-secondary  hover:bg-secondary-focus"
       >
         SIGN UP FOR FREE
       </NavLink>
