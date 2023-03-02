@@ -5,7 +5,6 @@ import {
   listDepartments,
   deleteDepartment,
 } from "../actions/departmentActions";
-import { PlusIcon, XIcon, PencilAltIcon } from "@heroicons/react/solid";
 import Loading from "../components/loading";
 
 const Department = () => {
@@ -41,7 +40,7 @@ const Department = () => {
               navigate("/adddepartment");
             }}
           >
-            <PlusIcon className="h-5 w-5 " />
+            <img className="h-5 w-5" src="/icons/plus.svg"/>
             <span>Add Department</span>
           </button>
         </div>
@@ -84,7 +83,7 @@ const Department = () => {
                           className="flex items-center justify-center bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
                           to={`/editdepartment/${department._id}`}
                         >
-                          <PencilAltIcon className="h-5 w-5" />
+                          <img className="h-5 w-5" src="/icons/edit-pencil.svg"/>
                         </NavLink>
                         {/* Delete */}
                         <button
@@ -93,7 +92,7 @@ const Department = () => {
                             deleteItem(department);
                           }}
                         >
-                          <XIcon className="h-5 w-5" />
+                          <img className="h-5 w-5" src="/icons/cross.svg"/>
                         </button>
                       </div>
                     </td>

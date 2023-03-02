@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userActions";
 import { NavLink, useNavigate } from "react-router-dom";
-import { UserGroupIcon } from "@heroicons/react/solid";
 import { isExpired } from "react-jwt";
 
 export default function Navbar() {
@@ -20,10 +19,12 @@ export default function Navbar() {
     <nav className="flex flex-col w-full md:flex-row md:justify-between items-center bg-purple-700 shadow-lg text-white py-3 px-2">
       {/* Logo and company */}
       <div className="flex items-center">
-        <UserGroupIcon
-          className="h-9 w-9 mx-4 hidden md:inline"
+        <img
+          className="h-9 w-9 mx-4 hidden md:inline cursor-pointer hover:scale-110"
+          src="/icons/community.svg"
           onClick={() => navigate("/")}
         />
+
         {userInfo && !isExpired(token) && (
           <h1 className="text-lg">{userInfo.company}</h1>
         )}

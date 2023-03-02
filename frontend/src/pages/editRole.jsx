@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editRole, listRoles } from "../actions/rolesActions";
-import { ArrowNarrowLeftIcon } from "@heroicons/react/solid";
 
 const EditRole = () => {
   const navigate = useNavigate();
@@ -52,7 +51,8 @@ const EditRole = () => {
           navigate("/roles");
         }}
       >
-        <ArrowNarrowLeftIcon className="w-4 h-4" />
+
+        <img className="w-4 h-4" src="/icons/arrow-left.svg"/>
         <span>Go back</span>
       </button>
       <main className="flex flex-col items-center justify-center  space-y-5 pt-4 mt-8">

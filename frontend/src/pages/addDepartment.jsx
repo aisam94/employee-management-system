@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addDepartment } from "../actions/departmentActions";
-import { ArrowNarrowLeftIcon } from "@heroicons/react/solid";
 
 const AddDepartment = () => {
   const navigate = useNavigate();
@@ -34,7 +33,7 @@ const AddDepartment = () => {
           navigate("/department");
         }}
       >
-        <ArrowNarrowLeftIcon className="w-4 h-4" />
+        <img className="w-4 h-4" src="/icons/arrow-left.svg"/>
         <span>Go back</span>
       </button>
       <main className="flex flex-col items-center justify-center  space-y-5 pt-4 mt-8">

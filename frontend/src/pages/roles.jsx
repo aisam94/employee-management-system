@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { listRoles, deleteRole } from "../actions/rolesActions";
-import { PlusIcon, XIcon, PencilAltIcon } from "@heroicons/react/solid";
 import { addRole } from "../actions/rolesActions";
 import Loading from "../components/loading";
 
@@ -60,8 +59,9 @@ const Roles = () => {
             onChange={change}
           />
           <button type="submit" form="roleInputForm">
-            <PlusIcon
+            <img
               className="h-8 w-8 bg-purple-500 hover:bg-purple-600 text-white p-1"
+              src="/icons/plus.svg"
               onClick={submit}
             />
           </button>
@@ -95,7 +95,7 @@ const Roles = () => {
                       className="flex items-center justify-center bg-purple-500 text-white w-1/2 font-normal hover:bg-purple-600 text-center"
                       to={`/editrole/${role._id}`}
                     >
-                      <PencilAltIcon className="h-5 w-5" />
+                      <img className="h-5 w-5" src="/icons/edit-pencil.svg" />
                     </NavLink>
                     {/* Delete */}
                     <button
@@ -104,7 +104,7 @@ const Roles = () => {
                         deleteItem(role);
                       }}
                     >
-                      <XIcon className="h-5 w-5" />
+                      <img className="h-5 w-5" src="/icons/cross.svg" />
                     </button>
                   </td>
                 </tr>

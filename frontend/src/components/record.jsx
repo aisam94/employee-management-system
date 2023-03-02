@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { deleteEmployee, listEmployees } from "../actions/employeeActions";
-import { PlusIcon, XIcon, PencilAltIcon } from "@heroicons/react/solid";
 import Loading from "./loading";
 
 const Record = () => {
@@ -48,7 +47,7 @@ const Record = () => {
               navigate("/addemployee");
             }}
           >
-            <PlusIcon className="h-5 w-5 " />
+            <img className="h-5 w-5" src="/icons/plus.svg"/>
             <span>Add Employee</span>
           </button>
         </div>
@@ -98,7 +97,7 @@ const Record = () => {
                           className="flex items-center justify-center bg-purple-500 hover:bg-purple-600 text-white w-1/2 font-normal text-center"
                           to={`/editemployee/${employee._id}`}
                         >
-                          <PencilAltIcon className="h-5 w-5" />
+                          <img className="h-5 w-5" src="/icons/edit-pencil.svg"/>
                         </NavLink>
                         {/* Delete */}
                         <button
@@ -107,7 +106,7 @@ const Record = () => {
                             deleteItem(employee);
                           }}
                         >
-                          <XIcon className="h-5 w-5" />
+                          <img className="h-5 w-5" src="/icons/cross.svg"/>
                         </button>
                       </div>
                     </td>
