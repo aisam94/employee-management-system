@@ -1,4 +1,5 @@
 import axios from "axios";
+import API from '../api';
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -8,8 +9,8 @@ export const login = (email, password) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const { data } = await axios.post(
-      `http://localhost:5000/api/users/login`,
+    const { data } = await API.post(
+      `/api/users/login`,
       {
         email,
         password,
@@ -42,8 +43,8 @@ export const register =
       dispatch({ type: "USER_REGISTER_REQUEST" });
       const config = { headers: { "Content-Type": "application/json" } };
 
-      const { data } = await axios.post(
-        "http://localhost:5000/api/users",
+      const { data } = await API.post(
+        "/api/users",
         {
           name: name,
           email: email,
@@ -84,8 +85,8 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(
-      `http://localhost:5000/api/users/profile`,
+    const { data } = await API.get(
+      `/api/users/profile`,
       config
     );
 
@@ -121,8 +122,8 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.put(
-      "http://localhost:5000/api/users/profile",
+    const { data } = await API.put(
+      "/api/users/profile",
       user,
       config
     );

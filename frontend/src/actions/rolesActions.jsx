@@ -1,4 +1,5 @@
 import axios from "axios";
+import API from '../api';
 
 export const addRole =
   ({ name }) =>
@@ -17,8 +18,8 @@ export const addRole =
         },
       };
 
-      const { data } = await axios.post(
-        "http://localhost:5000/api/roles",
+      const { data } = await API.post(
+        "/api/roles",
         {
           name: name,
         },
@@ -55,7 +56,7 @@ export const listRoles = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("http://localhost:5000/api/roles", config);
+    const { data } = await API.get("/api/roles", config);
 
     dispatch({ type: "ROLE_LIST_SUCCESS", payload: data });
   } catch (error) {
@@ -84,7 +85,7 @@ export const deleteRole = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`http://localhost:5000/api/roles/${id}`, config);
+    await API.delete(`/api/roles/${id}`, config);
   } catch (error) {
     dispatch({
       type: "ROLE_DELETE_FAIL",
@@ -113,8 +114,8 @@ export const editRole =
         },
       };
 
-      const { data } = await axios.put(
-        `http://localhost:5000/api/roles/${id}`,
+      const { data } = await API.put(
+        `/api/roles/${id}`,
         { name },
         config
       );

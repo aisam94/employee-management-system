@@ -1,4 +1,5 @@
 import axios from "axios";
+import API from '../api';
 
 export const listEmployees = () => async (dispatch, getState) => {
   try {
@@ -18,8 +19,8 @@ export const listEmployees = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(
-      "http://localhost:5000/api/employees",
+    const { data } = await API.get(
+      "/api/employees",
       config
     );
 
@@ -52,8 +53,8 @@ export const addEmployee =
         },
       };
 
-      const { data } = await axios.post(
-        "http://localhost:5000/api/employees",
+      const { data } = await API.post(
+        "/api/employees",
         {
           name: name,
           email: email,
@@ -95,8 +96,8 @@ export const editEmployee =
         },
       };
 
-      const { data } = await axios.put(
-        `http://localhost:5000/api/employees/${id}`,
+      const { data } = await API.put(
+        `/api/employees/${id}`,
         {
           name: name,
           email: email,
@@ -136,7 +137,7 @@ export const deleteEmployee = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`http://localhost:5000/api/employees/${id}`, config);
+    await API.delete(`/api/employees/${id}`, config);
 
     dispatch({ type: "EMPLOYEES_DELETE_SUCCESS" });
   } catch (error) {
