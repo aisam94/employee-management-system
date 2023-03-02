@@ -18,7 +18,10 @@ export const listEmployees = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/employees", config);
+    const { data } = await axios.get(
+      "http://localhost:5000/api/employees",
+      config
+    );
 
     dispatch({ type: "EMPLOYEES_LIST_SUCCESS", payload: data });
   } catch (error) {
@@ -50,7 +53,7 @@ export const addEmployee =
       };
 
       const { data } = await axios.post(
-        "/api/employees",
+        "http://localhost:5000/api/employees",
         {
           name: name,
           email: email,
@@ -93,7 +96,7 @@ export const editEmployee =
       };
 
       const { data } = await axios.put(
-        `/api/employees/${id}`,
+        `http://localhost:5000/api/employees/${id}`,
         {
           name: name,
           email: email,
@@ -133,7 +136,7 @@ export const deleteEmployee = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/employees/${id}`, config);
+    await axios.delete(`http://localhost:5000/api/employees/${id}`, config);
 
     dispatch({ type: "EMPLOYEES_DELETE_SUCCESS" });
   } catch (error) {

@@ -18,7 +18,7 @@ export const addRole =
       };
 
       const { data } = await axios.post(
-        "/api/roles",
+        "http://localhost:5000/api/roles",
         {
           name: name,
         },
@@ -55,7 +55,7 @@ export const listRoles = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/roles", config);
+    const { data } = await axios.get("http://localhost:5000/api/roles", config);
 
     dispatch({ type: "ROLE_LIST_SUCCESS", payload: data });
   } catch (error) {
@@ -84,7 +84,7 @@ export const deleteRole = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/roles/${id}`, config);
+    await axios.delete(`http://localhost:5000/api/roles/${id}`, config);
   } catch (error) {
     dispatch({
       type: "ROLE_DELETE_FAIL",
@@ -113,7 +113,11 @@ export const editRole =
         },
       };
 
-      const { data } = await axios.put(`/api/roles/${id}`, { name }, config);
+      const { data } = await axios.put(
+        `http://localhost:5000/api/roles/${id}`,
+        { name },
+        config
+      );
 
       dispatch({ type: "ROLE_ADD_SUCCESS", payload: data });
     } catch (error) {

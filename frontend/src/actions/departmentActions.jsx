@@ -18,7 +18,7 @@ export const addDepartment =
       };
 
       const { data } = await axios.post(
-        "/api/department",
+        "http://localhost:5000/api/department",
         {
           name: name,
           description: description,
@@ -57,7 +57,10 @@ export const listDepartments = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/department", config);
+    const { data } = await axios.get(
+      "http://localhost:5000/api/department",
+      config
+    );
 
     dispatch({ type: "DEPARTMENT_LIST_SUCCESS", payload: data });
   } catch (error) {
@@ -86,7 +89,7 @@ export const deleteDepartment = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/department/${id}`, config);
+    await axios.delete(`http://localhost:5000/api/department/${id}`, config);
   } catch (error) {
     dispatch({
       type: "DEPARTMENT_DELETE_FAIL",
@@ -116,7 +119,7 @@ export const editDepartment =
       };
 
       const { data } = await axios.put(
-        `/api/department/${id}`,
+        `http://localhost:5000/api/department/${id}`,
         { name, description, pictureUrl },
         config
       );

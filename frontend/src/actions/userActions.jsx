@@ -9,8 +9,11 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/users/login",
-      { email, password },
+      `http://localhost:5000/api/users/login`,
+      {
+        email,
+        password,
+      },
       config
     );
 
@@ -40,7 +43,7 @@ export const register =
       const config = { headers: { "Content-Type": "application/json" } };
 
       const { data } = await axios.post(
-        "/api/users",
+        "http://localhost:5000/api/users",
         {
           name: name,
           email: email,
@@ -81,7 +84,10 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/users/profile`, config);
+    const { data } = await axios.get(
+      `http://localhost:5000/api/users/profile`,
+      config
+    );
 
     dispatch({
       type: "USER_DETAILS_SUCCESS",
@@ -115,7 +121,11 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.put("/api/users/profile", user, config);
+    const { data } = await axios.put(
+      "http://localhost:5000/api/users/profile",
+      user,
+      config
+    );
 
     dispatch({
       type: "USER_UPDATE_PROFILE_SUCCESS",
