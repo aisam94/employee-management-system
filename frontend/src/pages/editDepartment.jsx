@@ -3,10 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editDepartment } from "../actions/departmentActions";
 import { ArrowNarrowLeftIcon } from "@heroicons/react/solid";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
 import { listDepartments } from "../actions/departmentActions";
 
 const EditDepartment = () => {
@@ -41,19 +37,6 @@ const EditDepartment = () => {
         id: params.id,
       })
     );
-    createNotification("success");
-  };
-
-  const createNotification = (message) => {
-    switch (message) {
-      case "success":
-        return NotificationManager.success(
-          "Department details updated.",
-          "",
-          500
-        );
-        break;
-    }
   };
 
   // useEffect(() => {
@@ -62,7 +45,6 @@ const EditDepartment = () => {
 
   return (
     <div className="mb-12">
-      <NotificationContainer />
       <button
         className="bg-purple-500 hover:bg-purple-600 text-white p-2 m-2 flex items-center space-x-2"
         onClick={() => {

@@ -3,10 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addDepartment } from "../actions/departmentActions";
 import { ArrowNarrowLeftIcon } from "@heroicons/react/solid";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
 
 const AddDepartment = () => {
   const navigate = useNavigate();
@@ -28,20 +24,10 @@ const AddDepartment = () => {
     event.preventDefault();
     dispatch(addDepartment({ name, description, pictureUrl }));
     setFormData(initialState);
-    createNotification("success");
-  };
-
-  const createNotification = (message) => {
-    switch (message) {
-      case "success":
-        return NotificationManager.success("Created a department", "", 500);
-        break;
-    }
   };
 
   return (
     <div className="mb-12">
-      <NotificationContainer />
       <button
         className="bg-purple-500 hover:bg-purple-600 text-white p-2 m-2 flex items-center space-x-2"
         onClick={() => {

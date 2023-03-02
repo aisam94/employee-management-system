@@ -3,10 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editRole, listRoles } from "../actions/rolesActions";
 import { ArrowNarrowLeftIcon } from "@heroicons/react/solid";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
 
 const EditRole = () => {
   const navigate = useNavigate();
@@ -35,16 +31,8 @@ const EditRole = () => {
         id: params.id,
       })
     );
-    createNotification("success");
   };
 
-  const createNotification = (message) => {
-    switch (message) {
-      case "success":
-        return NotificationManager.success("Role details updated.", "", 500);
-        break;
-    }
-  };
 
   async function getRole() {
     await dispatch(listRoles());
@@ -58,7 +46,6 @@ const EditRole = () => {
 
   return (
     <div className="mb-12">
-      <NotificationContainer />
       <button
         className="bg-purple-500 hover:bg-purple-600 text-white p-2 m-2 flex items-center space-x-2"
         onClick={() => {

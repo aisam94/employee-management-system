@@ -15,7 +15,6 @@ import EditDepartment from "./pages/editDepartment";
 import Roles from "./pages/roles";
 import EditRole from "./pages/editRole";
 import AuthWrapper from "./components/authWrapper";
-import "react-notifications/lib/notifications.css";
 
 const App = () => {
   return (

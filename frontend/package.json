@@ -5,30 +5,22 @@
   "private": true,
   "dependencies": {
     "@heroicons/react": "^1.0.6",
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
-    "ejs": "^3.1.6",
     "gravatar": "^1.8.2",
-    "multer": "^1.4.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-jwt": "^1.1.5",
     "react-notifications": "^1.7.3",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,8 +41,10 @@
     ]
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.0.23",
+    "vite": "^4.1.4"
   }
 }
