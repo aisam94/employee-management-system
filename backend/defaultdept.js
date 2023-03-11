@@ -1,0 +1,11 @@
+export const defaultDept = [
+    { name: 'Human Resource', description: "This department is responsible for managing the company's workforce, including hiring, training, and benefits administration", pictureUrl: '' },
+    { name: 'Finance and Accounting', description: "This department is responsible for managing the company's financial resources, including accounting, budgeting, financial reporting, and taxation", pictureUrl: '' },
+    { name: 'Marketing', description: "This department is responsible for promoting the company's products or services to potential customers", pictureUrl: '' },
+    { name: 'Sales', description: "This department is responsible for generating revenue for the company by selling its products or services to customers", pictureUrl: '' },
+    { name: 'Information Technology', description: "This department is responsible for managing the company's technological infrastructure, including hardware, software, networks, and data security.", pictureUrl: '' },
+    { name: 'Operations', description: "This department is responsible for managing the day-to-day operations of the company, including production, supply chain management, and logistics", pictureUrl: '' },
+    { name: 'Customer Service', description: "This department is responsible for managing customer inquiries, complaints, and feedback, as well as providing customer support and assistance", pictureUrl: '' },
+    { name: 'Research and Developments', description: "This department is responsible for developing new products, services, or technologies for the company, as well as improving existing ones", pictureUrl: '' },
+    { name: 'Legal', description: "This department is responsible for managing legal affairs of the company, including contracts, litigation, compliance with laws and regulations, and intellectual property management", pictureUrl: '' },
+    { name: 'Administration', description: "This department is responsible for managing administrative tasks of the company, including office management, facilities management, and administrative support for other departments", pictureUrl: '' }]

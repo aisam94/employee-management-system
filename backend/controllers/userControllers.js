@@ -2,6 +2,10 @@ import asyncHandler from "express-async-handler";
 import User from "../models/userModels.js";
 import Company from "../models/companyModel.js";
 import generateToken from "../utils/generateToken.js";
+import Department from "../models/departmentModels.js";
+import Role from "../models/roleModels.js";
+import { defaultDept } from '../defaultdept.js'
+import { defaultRoles } from '../defaultroles.js'
 
 //@description  Auth user and get token
 //@router       POST /api/users/login
@@ -44,6 +48,26 @@ const registerUser = asyncHandler(async (req, res) => {
   // const company = await Company.create({
   //   name: companyName,
   // });
+
+  // create default department for new user
+  for (let i = 0;i < defaultDept.length;i++) {
+    const currentDept = defaultDept[i];
+    Department.create({
+      name: currentDept.name,
+      description: currentDept.description,
+      company: companyName,
+      pictureUrl: currentDept.pictureUrl,
+    });
+  }
+
+  // create default roles for new user
+  for (let i = 0;i < defaultRoles.length;i++) {
+    const currentRole = defaultRoles[i];
+    Role.create({
+      name: currentRole,
+      company: companyName,
+    });
+  }
 
   const user = await User.create({
     name: name,

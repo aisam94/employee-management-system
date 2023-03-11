@@ -1,0 +1,15 @@
+export const defaultRoles = [
+    'CEO',
+    'COO',
+    'CFO',
+    'CTO',
+    'President',
+    'Vice President',
+    'Executive',
+    'Executive assistant',
+    'Manager',
+    'Manager Assistant',
+    'Project Manager',
+    'Personnel',
+    'Intern',
+]
