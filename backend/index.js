@@ -25,10 +25,14 @@ app.use("/api/roles", rolesRoutes);
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
-app.get("/", (req, res) => {
+const corsOption = {
+  origin: process.env.CLIENT_URL,
+}
+
+app.get("/*", cors(corsOption), (req, res) => {
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-  res.set('Access-Control-Allow-Origin', process.env.CLIENT_URL);
+  // res.set('Access-Control-Allow-Origin', process.env.CLIENT_URL);
   res.send("API is running ...");
 });
 
