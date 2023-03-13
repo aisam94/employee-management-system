@@ -13,8 +13,10 @@ const app = express();
 dotenv.config();
 
 const port = process.env.PORT || 5000;
-
-app.use(cors());
+const corsOption = {
+  origin: process.env.CLIENT_URL,
+}
+app.use(cors(corsOption));
 app.use(express.json());
 
 app.use("/api/employees", employeeRoutes);
@@ -25,11 +27,8 @@ app.use("/api/roles", rolesRoutes);
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
-const corsOption = {
-  origin: process.env.CLIENT_URL,
-}
 
-app.get("/*", cors(corsOption), (req, res) => {
+app.get("/", cors(corsOption), (req, res) => {
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL);
