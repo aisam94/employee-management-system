@@ -14,8 +14,8 @@ dotenv.config();
 
 const port = process.env.PORT || 5000;
 const corsOption = {
-  // origin: process.env.CLIENT_URL,
-  origin: '*',
+  origin: process.env.CLIENT_URL,
+  // origin: '*',
 }
 app.use(cors(corsOption));
 app.use(express.json());
