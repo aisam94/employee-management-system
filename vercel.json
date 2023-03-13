@@ -1,8 +1,10 @@
 {
-  "rewrites": [
-    {
-      "source": "/backend/(.*)",
-      "destination": "/backend"
-    }
-  ]
+   "version": 2,
+   "name": "employee-mgmt-system",
+   "builds": [
+      { "src": "backend/index.js", "use": "@vercel/node" }
+   ],
+   "routes": [
+      { "src": "/(.*)", "dest": "backend/index.js" }
+   ]
 }
