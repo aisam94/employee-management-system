@@ -14,7 +14,8 @@ dotenv.config();
 
 const port = process.env.PORT || 5000;
 const corsOption = {
-  origin: process.env.CLIENT_URL,
+  // origin: process.env.CLIENT_URL,
+  origin: '*',
 }
 app.use(cors(corsOption));
 app.use(express.json());
@@ -31,7 +32,7 @@ app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 app.get("/", cors(corsOption), (req, res) => {
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-  res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL);
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.send("API is running ...");
 });
 
