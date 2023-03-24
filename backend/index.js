@@ -20,19 +20,13 @@ app.use(cors(corsOption));
 app.use(express.json());
 
 app.use("/api/employees", employeeRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/users", cors(corsOption), userRoutes);
 app.use("/api/department", departmentRoutes);
 app.use("/api/roles", rolesRoutes);
 
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
-app.get("/api/users", cors(corsOption), (req, res) => {
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.send("API is running ...");
-});
 
 app.get("/", (req, res) => {
   res.setHeader('Content-Type', 'text/html');
