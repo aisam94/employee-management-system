@@ -21,6 +21,22 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    gender: {
+      type: String,
+      enum: ['male', 'female', 'others']
+    },
+    lastLoginDate: Date,
+    lastPasswordResetDate: Date,
+    createdAt: {
+      type: Date,
+      default: Date.now
+    },
+    updatedAt: Date,
+    deletedAt: Date,
+    isEmailVerified: {
+      type: Boolean,
+      default: false,
+    }
   },
   { timestamps: true }
 );

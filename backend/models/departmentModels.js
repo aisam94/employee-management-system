@@ -1,18 +1,10 @@
 import mongoose from "mongoose";
 
 const departmentSchema = mongoose.Schema({
-  name: {
-    type: String,
-  },
-  description: {
-    type: String,
-  },
-  pictureUrl: {
-    type: String,
-  },
-  company: {
-    type: String,
-  },
+  name: String,
+  description: String,
+  company: String,
+  contact: Number,
 });
 
 const Department = mongoose.model("Department", departmentSchema);

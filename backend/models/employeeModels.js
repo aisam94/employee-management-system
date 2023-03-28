@@ -10,6 +10,10 @@ const employeeSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+    },
     company: {
       // type: mongoose.Schema.Types.ObjectId,
       // ref: "Company",
@@ -24,17 +28,22 @@ const employeeSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Department",
     },
-    age: {
-      type: Number,
-      required: true,
+    age: Number,
+    pictureUrl: String,
+    address: String,
+    phone: Number,
+    emergencyContactName: String,
+    emergencyContactPhone: Number,
+    startDate: {
+      type: Date,
+      default: Date.now
     },
-    email: {
+    terminationDate: Date,
+    employmentStatus: {
       type: String,
-      required: true,
+      enum: ['full-time', 'part-time', 'contract']
     },
-    pictureUrl: {
-      type: String,
-    },
+    salary: Number,
   },
   { timestamps: true }
 );

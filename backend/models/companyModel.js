@@ -6,6 +6,19 @@ const companySchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: Number,
+    website: String,
+    description: String,
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+    updatedAt: Date,
+    deletedAt: Date,
   },
   { timestamps: true }
 );
