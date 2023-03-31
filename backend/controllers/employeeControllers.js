@@ -62,7 +62,7 @@ const addEmployee = asyncHandler(async (req, res) => {
   });
 
   const newRoles = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0;i < role.length;i++) {
     const newRole = await Role.findOne({
       name: role[i],
       company: company,
@@ -115,9 +115,8 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
   });
 
   const newRoles = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0;i < req.body.role.length;i++) {
     const newRole = await Role.findOne({
-      // name: req.body.role,
       name: req.body.role[i],
       company: company,
     });
@@ -169,6 +168,7 @@ const deleteEmployee = asyncHandler(async (req, res) => {
     await employee.remove();
     return res.json({
       message: "Employee has been deleted.",
+      id: req.params.id,
     });
   } catch (error) {
     console.error(error.message);

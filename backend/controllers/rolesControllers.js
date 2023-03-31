@@ -102,6 +102,7 @@ const deleteRole = asyncHandler(async (req, res) => {
     await role.remove();
     return res.json({
       message: "Role has been deleted.",
+      id: req.params.id,
     });
   } catch (error) {
     console.error(error.message);

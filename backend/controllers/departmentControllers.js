@@ -112,6 +112,7 @@ const deleteDepartment = asyncHandler(async (req, res) => {
     await department.remove();
     return res.json({
       message: "Department has been deleted.",
+      id: req.params.id
     });
   } catch (error) {
     console.error(error.message);
