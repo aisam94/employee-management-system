@@ -28,6 +28,7 @@ const employeeSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Department",
     },
+    avatar: String,
     age: Number,
     pictureUrl: String,
     address: String,

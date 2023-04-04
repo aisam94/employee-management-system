@@ -39,7 +39,7 @@ const getEmployeeById = asyncHandler(async (req, res) => {
 //@access       Private
 
 const addEmployee = asyncHandler(async (req, res) => {
-  const { name, employeeId, email, role, age, department, pictureUrl } =
+  const { name, employeeId, email, role, age, department, pictureUrl, avatar } =
     req.body;
   const company = req.user.company;
 
@@ -80,6 +80,7 @@ const addEmployee = asyncHandler(async (req, res) => {
     department: newDepartment,
     company: company,
     pictureUrl: pictureUrl,
+    avatar: avatar,
   });
 
   //return employee profile json
@@ -94,6 +95,7 @@ const addEmployee = asyncHandler(async (req, res) => {
       role: employee.role,
       age: employee.age,
       department: employee.department,
+      avatar: employee.avatar,
     });
   } else {
     res.status(400);
@@ -132,6 +134,7 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
     // employee.role = newRoles || employee.role;
     employee.role = newRoles;
     employee.department = newDepartment || employee.department;
+    employee.avatar = req.body.avatar || employee.avatar;
 
     const updatedEmployee = await employee.save();
     return res.json({
@@ -143,6 +146,7 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
       age: updatedEmployee.age,
       department: updatedEmployee.department,
       employeeId: updatedEmployee.employeeId,
+      avatar: updatedEmployee.avatar,
     });
   } else {
     res.status(404);
