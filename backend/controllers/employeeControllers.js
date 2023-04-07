@@ -3,6 +3,18 @@ import Employee from "../models/employeeModels.js";
 import Department from "../models/departmentModels.js";
 import Role from "../models/roleModels.js";
 
+// function to parse roles into objects
+async function parseRole(roles) {
+  let arr = [];
+  for (let i = 0;i < roles.length;i++) {
+    const role = await Role.findById(roles[i]);
+    if (role) {
+      arr.push(role);
+    }
+  }
+  return arr;
+};
+
 //@description  Fetch all employees
 //@router       GET /api/employees
 //@access       Private
@@ -137,12 +149,14 @@ const updateEmployeeById = asyncHandler(async (req, res) => {
     employee.avatar = req.body.avatar || employee.avatar;
 
     const updatedEmployee = await employee.save();
+    const updatedRoles = await parseRole(updatedEmployee.role);
+
     return res.json({
       _id: updatedEmployee._id,
       name: updatedEmployee.name,
       email: updatedEmployee.email,
       pictureUrl: updatedEmployee.pictureUrl,
-      role: updatedEmployee.role,
+      role: updatedRoles,
       age: updatedEmployee.age,
       department: updatedEmployee.department,
       employeeId: updatedEmployee.employeeId,
