@@ -1,5 +1,7 @@
 import express from "express";
-import path, { dirname } from "path";
+import https from 'https';
+import fs from 'fs';
+import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/connect.js";
@@ -32,7 +34,12 @@ app.get("/", (req, res) => {
   res.send("API is running ...");
 });
 
-app.listen(port, () => {
+const options = {
+  key: fs.readFileSync(process.env.KEY_DIR),
+  cert: fs.readFileSync(process.env.CERT_DIR),
+}
+
+https.createServer(options, app).listen(port, () => {
   //perform database connection when server starts
   connectDB();
   console.log(`Server is running on port: ${port}`);
